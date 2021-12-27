@@ -5,7 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @Builder
@@ -24,4 +28,13 @@ public class Casa {
         }
         return totalArea;
     }
+
+    public BigDecimal valorCasa() {
+        return BigDecimal.valueOf(calculaArea() * 800);
+    }
+
+    public Comodo maiorComodo() {
+         return comodos.stream().max(Comparator.comparing(Comodo::calculaAreaComodo)).orElse(new Comodo());
+    }
+
 }
