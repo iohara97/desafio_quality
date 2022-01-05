@@ -11,14 +11,14 @@ public class BairroRepository {
 
     HashMap<String, BigDecimal> bairros = new HashMap<>();
 
-    public BairroRepository(BairroRepository mock) {
+    public BairroRepository() {
         bairros.put("Republica", new BigDecimal(200));
         bairros.put("Dom Pedro", new BigDecimal(500));
         bairros.put("Belenzinho", new BigDecimal(400));
         bairros.put("Cambuci", new BigDecimal(600));
     }
 
-        public boolean bairroExiste(String bairro) {
+    public boolean bairroExiste(String bairro) {
         if(bairros.containsKey(bairro)) {
             return true;
         }
