@@ -25,10 +25,19 @@ public class CasaDTO {
     @NotNull(message = "O nome da propriedade não pode estar vazio.")
     @NotEmpty(message = "O nome da propriedade não pode estar vazio.")
     @NotBlank(message = "O nome da propriedade não pode estar vazio.")
-    @Pattern(regexp = "[A-Z]\\w", message = "O nome da propriedade deve começar com uma letra maiúscula.")
+    @Pattern(regexp = "^[A-Z].*$", message = "O nome da propriedade deve começar com uma letra maiúscula.")
     @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres.")
     private String nome;
+
+    @NotNull(message = "O bairro não pode estar vazio.")
+    @NotEmpty(message = "O bairro não pode estar vazio.")
+    @NotBlank(message = "O bairro não pode estar vazio.")
+    @Size(max = 45, message = "O comprimento do bairro não pode exceder 45 caracteres.")
     private String endereco;
+//
+    @NotNull(message = "O valor do metro quadrado no bairro não pode estar vazio.")
+    @DecimalMin(value= "0.0", inclusive = false, message = "O valor do metro quadrado no bairro não pode estar vazio.")
+    @Digits(integer=10, fraction=2, message= "O valor não pode exceder 13 caracteres, com apenas duas casas decimais.")
     private BigDecimal valorMetroQuadrado;
     private List<Comodo> comodos;
 
