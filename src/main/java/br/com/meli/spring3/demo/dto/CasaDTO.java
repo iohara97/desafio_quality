@@ -29,36 +29,20 @@ public class CasaDTO {
     @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres.")
     private String nome;
 
-    @NotNull(message = "O bairro não pode estar vazio.")
-    @NotEmpty(message = "O bairro não pode estar vazio.")
-    @NotBlank(message = "O bairro não pode estar vazio.")
-    @Size(max = 45, message = "O comprimento do bairro não pode exceder 45 caracteres.")
-    private String endereco;
-//
-    @NotNull(message = "O valor do metro quadrado no bairro não pode estar vazio.")
-    @DecimalMin(value= "0.0", inclusive = false, message = "O valor do metro quadrado no bairro não pode estar vazio.")
-    @Digits(integer=10, fraction=2, message= "O valor não pode exceder 13 caracteres, com apenas duas casas decimais.")
-    private BigDecimal valorMetroQuadrado;
-    private List<Comodo> comodos;
+    @Valid
+    private BairroDTO bairroDTO;
+
+    @Valid
+    private List<ComodoDTO> comodosDTO;
 
     public static Casa converte(CasaDTO dto) {
         Casa casa = Casa.builder()
-                .nome(dto.getNome())
-                .endereco(dto.getEndereco())
-                .valorMetroQuadrado(dto.getValorMetroQuadrado())
-                .comodos(dto.getComodos())
+                .nome(dto.getNome()).bairro(BairroDTO.converte(dto.getBairroDTO()))
+                .comodos(ComodoDTO.converte(dto.getComodosDTO()))
                 .build();
         return casa;
     }
 
-    public static CasaDTO converte(Casa casa) {
-        return CasaDTO.builder()
-                .nome(casa.getNome())
-                .endereco(casa.getEndereco())
-                .valorMetroQuadrado(casa.getValorMetroQuadrado())
-                .comodos(casa.getComodos())
-                .build();
-    }
 
     /* exemplo JSON
     {

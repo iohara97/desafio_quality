@@ -16,8 +16,7 @@ import java.util.List;
 public class Casa {
 
     private String nome;
-    private String endereco;
-    private BigDecimal valorMetroQuadrado;
+    private Bairro bairro;
     private List<Comodo> comodos;
 
     public double calculaArea() {
@@ -29,7 +28,8 @@ public class Casa {
     }
 
     public BigDecimal valorCasa() {
-        return BigDecimal.valueOf(calculaArea()).multiply(valorMetroQuadrado);
+
+        return BigDecimal.valueOf(calculaArea()).multiply(bairro.getValorMetroQuadrado());
     }
 
     public Comodo maiorComodo() {
