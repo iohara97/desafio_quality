@@ -1,4 +1,4 @@
-package br.com.meli.spring3.demo.model;
+package br.com.meli.spring3.demo.entity;
 
 
 import lombok.AllArgsConstructor;

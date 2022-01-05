@@ -1,4 +1,4 @@
-package br.com.meli.spring3.demo.model;
+package br.com.meli.spring3.demo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,10 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 @Data
 @Builder
@@ -19,6 +17,7 @@ public class Casa {
 
     private String nome;
     private String endereco;
+    private BigDecimal valorMetroQuadrado;
     private List<Comodo> comodos;
 
     public double calculaArea() {
@@ -30,7 +29,7 @@ public class Casa {
     }
 
     public BigDecimal valorCasa() {
-        return BigDecimal.valueOf(calculaArea() * 800);
+        return BigDecimal.valueOf(calculaArea()).multiply(valorMetroQuadrado);
     }
 
     public Comodo maiorComodo() {

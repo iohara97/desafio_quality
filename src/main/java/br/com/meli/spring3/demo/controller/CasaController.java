@@ -2,15 +2,14 @@ package br.com.meli.spring3.demo.controller;
 
 import br.com.meli.spring3.demo.dto.CasaDTO;
 import br.com.meli.spring3.demo.dto.ComodoSaidaDTO;
-import br.com.meli.spring3.demo.model.Casa;
-import br.com.meli.spring3.demo.model.Comodo;
+import br.com.meli.spring3.demo.entity.Casa;
+import br.com.meli.spring3.demo.entity.Comodo;
 import br.com.meli.spring3.demo.service.CasaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,7 +33,7 @@ public class CasaController {
         return ResponseEntity.ok(casaService.calculaArea(nomeDaCasa));
     }
 
-    // Retorne o valor da casa tendo em consideração R$ 800 por metro quadrado
+    // Retorne o valor da casa tendo em consideração o valor por metro quadrado
     @GetMapping("/valor/{nomeDaCasa}")
     public ResponseEntity<BigDecimal> valorCasa(@PathVariable String nomeDaCasa) {
         return ResponseEntity.ok(casaService.valorCasa(nomeDaCasa));

@@ -1,6 +1,6 @@
 package br.com.meli.spring3.demo.dto;
 
-import br.com.meli.spring3.demo.model.Comodo;
+import br.com.meli.spring3.demo.entity.Comodo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

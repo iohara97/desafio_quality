@@ -1,7 +1,7 @@
 package br.com.meli.spring3.demo.repository;
 
-import br.com.meli.spring3.demo.model.Casa;
-import br.com.meli.spring3.demo.model.Comodo;
+import br.com.meli.spring3.demo.entity.Casa;
+import br.com.meli.spring3.demo.entity.Comodo;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

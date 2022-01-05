@@ -1,13 +1,14 @@
 package br.com.meli.spring3.demo.dto;
 
 
-import br.com.meli.spring3.demo.model.Casa;
-import br.com.meli.spring3.demo.model.Comodo;
+import br.com.meli.spring3.demo.entity.Casa;
+import br.com.meli.spring3.demo.entity.Comodo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -17,12 +18,14 @@ import java.util.List;
 public class CasaDTO {
     private String nome;
     private String endereco;
+    private BigDecimal valorMetroQuadrado;
     private List<Comodo> comodos;
 
     public static Casa converte(CasaDTO dto) {
         Casa casa = Casa.builder()
                 .nome(dto.getNome())
                 .endereco(dto.getEndereco())
+                .valorMetroQuadrado(dto.getValorMetroQuadrado())
                 .comodos(dto.getComodos())
                 .build();
         return casa;
@@ -32,6 +35,7 @@ public class CasaDTO {
         return CasaDTO.builder()
                 .nome(casa.getNome())
                 .endereco(casa.getEndereco())
+                .valorMetroQuadrado(casa.getValorMetroQuadrado())
                 .comodos(casa.getComodos())
                 .build();
     }

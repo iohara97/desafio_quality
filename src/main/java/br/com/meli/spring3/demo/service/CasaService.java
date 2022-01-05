@@ -1,12 +1,11 @@
 package br.com.meli.spring3.demo.service;
 
 import br.com.meli.spring3.demo.dto.ComodoSaidaDTO;
-import br.com.meli.spring3.demo.model.Casa;
-import br.com.meli.spring3.demo.model.Comodo;
+import br.com.meli.spring3.demo.entity.Casa;
+import br.com.meli.spring3.demo.entity.Comodo;
 import br.com.meli.spring3.demo.repository.CasaRepository;
 import org.springframework.stereotype.Service;
 
-import javax.lang.model.type.ArrayType;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
