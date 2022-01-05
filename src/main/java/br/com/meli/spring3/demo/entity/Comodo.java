@@ -16,8 +16,4 @@ public class Comodo {
     private double largura;
     private double comprimento;
 
-    public double calculaAreaComodo() {
-        return largura * comprimento;
-    }
-
 }

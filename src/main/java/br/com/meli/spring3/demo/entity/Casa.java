@@ -19,19 +19,6 @@ public class Casa {
     private Bairro bairro;
     private List<Comodo> comodos;
 
-    public double calculaArea() {
-        double totalArea = 0;
-        for (Comodo comodo : comodos) {
-            totalArea += comodo.calculaAreaComodo();
-        }
-        return totalArea;
-    }
-
-    public BigDecimal valorCasa() {
-
-        return BigDecimal.valueOf(calculaArea()).multiply(bairro.getValorMetroQuadrado());
-    }
-
     public Comodo maiorComodo() {
          return comodos.stream().max(Comparator.comparing(Comodo::calculaAreaComodo)).orElse(new Comodo());
     }
