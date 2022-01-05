@@ -7,15 +7,26 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 
 import java.math.BigDecimal;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+
 import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Validated
 public class CasaDTO {
+
+    @NotNull(message = "O nome da propriedade não pode estar vazio.")
+    @NotEmpty(message = "O nome da propriedade não pode estar vazio.")
+    @NotBlank(message = "O nome da propriedade não pode estar vazio.")
+    @Pattern(regexp = "[A-Z]\\w", message = "O nome da propriedade deve começar com uma letra maiúscula.")
+    @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres.")
     private String nome;
     private String endereco;
     private BigDecimal valorMetroQuadrado;
