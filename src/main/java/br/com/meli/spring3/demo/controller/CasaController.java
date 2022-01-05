@@ -7,8 +7,11 @@ import br.com.meli.spring3.demo.entity.Comodo;
 import br.com.meli.spring3.demo.service.CasaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.executable.ValidateOnExecution;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -21,7 +24,7 @@ public class CasaController {
 
     // Post para receber os dados da casa
     @PostMapping
-    public ResponseEntity<Casa> cadastra(@RequestBody CasaDTO dto) {
+    public ResponseEntity<Casa> cadastra(@Valid @RequestBody CasaDTO dto) {
         Casa casa = CasaDTO.converte(dto);
         casaService.salvar(casa);
         return ResponseEntity.ok(casa);
