@@ -1,9 +1,8 @@
 package br.com.meli.spring3.demo.repository;
 
-import org.springframework.stereotype.Component;
+import exception.BusinessException;
 import org.springframework.stereotype.Repository;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -19,7 +18,10 @@ public class BairroRepository {
         bairros.put("Cambuci", new BigDecimal(600));
     }
 
-    public boolean bairroExiste(String bairro) {
-        return bairros.get(bairro) != null;
+        public boolean bairroExiste(String bairro) {
+        if(bairros.containsKey(bairro)) {
+            return true;
+        }
+        throw new BusinessException("Bairro não encontrado.");
     }
 }

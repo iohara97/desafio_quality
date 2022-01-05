@@ -3,6 +3,7 @@ package br.com.meli.spring3.entityTest;
 import br.com.meli.spring3.demo.entity.Casa;
 import br.com.meli.spring3.demo.entity.Comodo;
 import br.com.meli.spring3.demo.repository.BairroRepository;
+import exception.BusinessException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -10,6 +11,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CasaTest {
 
@@ -31,14 +34,34 @@ public class CasaTest {
     }
 
     @Test
-    public void verificaBairroNoRepositorioDeBairros() throws IOException {
+    public void testaBairroQueNaoExiste() {
+
+        BairroRepository mock = Mockito.mock(BairroRepository.class);
+        BairroRepository bairroRepository = new BairroRepository(mock);
+
+        String bairro = "Para";
+
+        // intera com bairros do repository
+        //assert(bairroRepository.bairroExiste(bairro));
+
+        BusinessException excecaoEsperada = assertThrows(
+                BusinessException.class,
+                () -> bairroRepository.bairroExiste(bairro) //act
+        );
+
+        assertTrue(excecaoEsperada.getMessage().contains("Bairro não encontrado."));
+    }
+
+    @Test
+    public void testaBairroQueExiste() {
 
         BairroRepository mock = Mockito.mock(BairroRepository.class);
         BairroRepository bairroRepository = new BairroRepository(mock);
 
         String bairro = "Belenzinho";
 
-        // intera com bairros do repository
-        assert(bairroRepository.bairroExiste(bairro));
+        assertTrue(bairroRepository.bairroExiste(bairro));
     }
+
+
 }
