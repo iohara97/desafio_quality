@@ -7,8 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import java.util.List;
 
 @Data
@@ -16,6 +20,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CasaDTO {
+
+    @NotNull
+    @NotEmpty(message = "O nome da propriedade não pode estar vazio.")
+    @Pattern(regexp = "ˆ[A-Z]\w$")
+    @Size(min = 3, message = "tamanho minimo 3")
     private String nome;
     private String endereco;
     private BigDecimal valorMetroQuadrado;
