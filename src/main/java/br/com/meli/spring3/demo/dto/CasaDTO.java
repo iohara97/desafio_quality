@@ -25,31 +25,24 @@ public class CasaDTO {
     @NotNull(message = "O nome da propriedade não pode estar vazio.")
     @NotEmpty(message = "O nome da propriedade não pode estar vazio.")
     @NotBlank(message = "O nome da propriedade não pode estar vazio.")
-    @Pattern(regexp = "[A-Z]\\w", message = "O nome da propriedade deve começar com uma letra maiúscula.")
+    @Pattern(regexp = "^[A-Z].*$", message = "O nome da propriedade deve começar com uma letra maiúscula.")
     @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres.")
     private String nome;
-    private String endereco;
-    private BigDecimal valorMetroQuadrado;
-    private List<Comodo> comodos;
+
+    @Valid
+    private BairroDTO bairroDTO;
+
+    @Valid
+    private List<ComodoDTO> comodosDTO;
 
     public static Casa converte(CasaDTO dto) {
         Casa casa = Casa.builder()
-                .nome(dto.getNome())
-                .endereco(dto.getEndereco())
-                .valorMetroQuadrado(dto.getValorMetroQuadrado())
-                .comodos(dto.getComodos())
+                .nome(dto.getNome()).bairro(BairroDTO.converte(dto.getBairroDTO()))
+                .comodos(ComodoDTO.converte(dto.getComodosDTO()))
                 .build();
         return casa;
     }
 
-    public static CasaDTO converte(Casa casa) {
-        return CasaDTO.builder()
-                .nome(casa.getNome())
-                .endereco(casa.getEndereco())
-                .valorMetroQuadrado(casa.getValorMetroQuadrado())
-                .comodos(casa.getComodos())
-                .build();
-    }
 
     /* exemplo JSON
     {

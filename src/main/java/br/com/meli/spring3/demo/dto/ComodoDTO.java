@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -32,5 +35,10 @@ public class ComodoDTO {
                     .comprimento(comodos.getComprimento())
                     .build();
         }
+
+        public static List<Comodo> converte(List<ComodoDTO> comodos) {
+            return comodos.stream().map(c -> converte(c)).collect(Collectors.toList());
+        }
+
 
 }

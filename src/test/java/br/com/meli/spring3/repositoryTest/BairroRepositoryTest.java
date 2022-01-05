@@ -17,7 +17,7 @@ public class BairroRepositoryTest {
     public void testaBairroQueNaoExiste() {
 
         BairroRepository mock = Mockito.mock(BairroRepository.class);
-        BairroRepository bairroRepository = new BairroRepository(mock);
+        BairroRepository bairroRepository = new BairroRepository();
 
         String bairro = "Para";
 
@@ -36,7 +36,7 @@ public class BairroRepositoryTest {
     public void testaBairroQueExiste() {
 
         BairroRepository mock = Mockito.mock(BairroRepository.class);
-        BairroRepository bairroRepository = new BairroRepository(mock);
+        BairroRepository bairroRepository = new BairroRepository();
 
         String bairro = "Belenzinho";
 
