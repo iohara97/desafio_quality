@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+/**
+ * Classe que contem os atribustos da entidade
+ */
 @Data
 @Builder
 @NoArgsConstructor

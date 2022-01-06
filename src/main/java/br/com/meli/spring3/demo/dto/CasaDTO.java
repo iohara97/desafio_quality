@@ -11,6 +11,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 
+/**
+ * Classe para otimizar a apresentações dos dados exibindo uma resposta personalizada
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -31,6 +34,12 @@ public class CasaDTO {
     @Valid
     private List<ComodoDTO> comodosDTO;
 
+    /**
+     * Metodo que converte um DTO para sua respectiva entidade
+     * @param dto
+     * @return Entidade casa
+     * @exception PayloadException
+     */
     public static Casa converte(CasaDTO dto) {
         try{
             Casa casa = Casa.builder()

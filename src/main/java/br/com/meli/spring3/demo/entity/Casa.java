@@ -9,6 +9,9 @@ import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Classe que contem os atribustos da entidade
+ */
 @Data
 @Builder
 @NoArgsConstructor
