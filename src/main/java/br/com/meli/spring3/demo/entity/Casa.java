@@ -19,8 +19,4 @@ public class Casa {
     private Bairro bairro;
     private List<Comodo> comodos;
 
-    public Comodo maiorComodo() {
-         return comodos.stream().max(Comparator.comparing(Comodo::calculaAreaComodo)).orElse(new Comodo());
-    }
-
 }
