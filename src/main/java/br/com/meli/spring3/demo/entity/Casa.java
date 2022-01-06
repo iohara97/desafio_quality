@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Classe que contem os atribustos da entidade
+ * Classe que contem os atributos da entidade
  */
 @Data
 @Builder
