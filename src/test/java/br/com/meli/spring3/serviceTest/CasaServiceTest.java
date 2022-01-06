@@ -15,10 +15,15 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Classe que contem a logica da entidade casa para efeito de teste
+ */
 public class CasaServiceTest {
 
+    /**
+     * Metodo para testar se a casa está sendo salva
+     */
     @Test
-    // CasaService.salvar()
     public void deveVerificarACriacaoDeUmaNovaCasa(){
         MockListaCasas listaCasas = new MockListaCasas();
         Casa casa = listaCasas.getCasas().get(0);
@@ -32,8 +37,10 @@ public class CasaServiceTest {
         assertTrue(casaCriada.equals(casa));
     }
 
+    /**
+     * Metodo para testa se uma casa está sendo localizada
+     */
     @Test
-    //CasaService.findOne()
     public void deveRetornarUmaCasa(){
         MockListaCasas listaCasas = new MockListaCasas();
         Casa casa = listaCasas.getCasas().get(0);
@@ -47,8 +54,10 @@ public class CasaServiceTest {
         assertTrue(casa.equals(casaRetornada));
     }
 
+    /**
+     * Metodo para testar o recebimento de uma lista comodoDTO
+     */
     @Test
-    // CasaService.listaComodoDTO()
     public void deveRetornarListaDeComodosDTO(){
         MockListaCasas listaCasas = new MockListaCasas();
         Casa casa = listaCasas.getCasas().get(0);
@@ -63,8 +72,10 @@ public class CasaServiceTest {
 
     }
 
+    /**
+     * Metodo para testar se o valor da casa está com o calculo correto
+     */
     @Test
-    // CasaService.valorCasa()
     public void deveRetornarOValorDaCasa(){
         MockListaCasas listaCasas = new MockListaCasas();
 
@@ -78,8 +89,10 @@ public class CasaServiceTest {
         assertTrue(valorCasa.compareTo(new BigDecimal(4250)) == 0);
     }
 
+    /**
+     * Metodo para testar se o calculo da área está correto
+     */
     @Test
-    // CasaService.calculaArea()
     public void deveRetornarMetrosQuadradosTotalDaCasa() {
         MockListaCasas listaCasas = new MockListaCasas();
 
@@ -93,8 +106,11 @@ public class CasaServiceTest {
         assert(totalAreaCasa == 17);
     }
 
+    /**
+     * Metodo para testar o retorno do maior comando de uma casa
+     * @throws IOException
+     */
     @Test
-    // CasaService.maiorComodo()
     public void deveVerificarMaiorComodo() throws IOException {
         MockListaCasas listaCasas = new MockListaCasas();
 

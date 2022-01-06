@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"br.com.meli.spring3.demo"},{"l":"br.com.meli.spring3.demo.controller"},{"l":"br.com.meli.spring3.demo.dto"},{"l":"br.com.meli.spring3.demo.entity"},{"l":"br.com.meli.spring3.demo.repository"},{"l":"br.com.meli.spring3.demo.service"},{"l":"exception"}]

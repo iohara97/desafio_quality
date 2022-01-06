@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
+/**
+ * Classe para otimizar a apresentações dos dados exibindo uma resposta personalizada
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -27,6 +30,11 @@ public class BairroDTO {
     @Digits(integer=10, fraction=2, message= "O valor não pode exceder 13 caracteres, com apenas duas casas decimais.")
     private BigDecimal valorMetroQuadrado;
 
+    /**
+     * Metodo que converte um DTO para sua respectiva entidade
+     * @param bairroDTO
+     * @return Entidade bairro
+     */
     public static Bairro converte(BairroDTO bairroDTO) {
         Bairro bairro = Bairro.builder()
                 .nome(bairroDTO.getNome())
