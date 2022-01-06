@@ -4,6 +4,8 @@ import br.com.meli.spring3.demo.dto.ComodoSaidaDTO;
 import br.com.meli.spring3.demo.entity.Casa;
 import br.com.meli.spring3.demo.entity.Comodo;
 import br.com.meli.spring3.demo.repository.CasaRepository;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -12,6 +14,8 @@ import java.util.Comparator;
 import java.util.List;
 
 @Service
+@NoArgsConstructor
+@Data
 public class CasaService {
 
     private CasaRepository casaRepository;
@@ -20,16 +24,16 @@ public class CasaService {
         this.casaRepository = casaRepository;
     }
 
-    public void salvar(Casa casa) {
+    public Casa salvar(Casa casa) {
         if (temComodo(casa)) {
-            casaRepository.salva(casa);
+            return casaRepository.salva(casa);
         } else {
             throw new RuntimeException("a casa deve ter pelos menos um comodo");
         }
     }
 
     public Casa findOne(String nome) {
-        return casaRepository.findOne(nome);
+        return casaRepository.buscaCasa(nome);
     }
 
     public List<ComodoSaidaDTO> listaComodoDTO(Casa casa) {
