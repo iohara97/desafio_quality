@@ -65,7 +65,6 @@ public class CasaTest {
 
     }*/
 
-
     /**
      * Método que deve confirmar se o método calcular valorCasa está correto
      * @throws IOException
