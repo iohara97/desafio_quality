@@ -9,6 +9,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe para mockar uma lista de casas
+ */
 @Data
 public class MockListaCasas {
 

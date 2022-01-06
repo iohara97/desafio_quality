@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Classe que contem os atributos da entidade
+ */
 @Data
 @Builder
 @NoArgsConstructor

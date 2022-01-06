@@ -1,0 +1,7 @@
+br.com.meli.spring3.demo
+br.com.meli.spring3.demo.controller
+br.com.meli.spring3.demo.dto
+br.com.meli.spring3.demo.entity
+br.com.meli.spring3.demo.repository
+br.com.meli.spring3.demo.service
+exception

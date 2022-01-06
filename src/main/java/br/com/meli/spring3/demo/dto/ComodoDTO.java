@@ -10,6 +10,9 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Classe para otimizar a apresentações dos dados exibindo uma resposta personalizada
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -29,6 +32,11 @@ public class ComodoDTO {
         @Max(value = 33, message = "O comprimento máximo permitido por cômodo é de 33 metros.")
         private double comprimento;
 
+        /**
+         *  Metodo que converte um DTO para sua respectiva entidade
+         * @param dto
+         * @return Entidade comodos
+         */
         public static Comodo converte(ComodoDTO dto) {
             Comodo comodos = Comodo.builder()
                     .nome(dto.getNome())
@@ -38,6 +46,11 @@ public class ComodoDTO {
             return comodos;
         }
 
+        /**
+         *  Metodo que converte uma entidade para uma DTO
+         * @param comodos
+         * @return ComodoDTO
+         */
         public static ComodoDTO converte(Comodo comodos) {
             return ComodoDTO.builder()
                     .nome(comodos.getNome())
@@ -46,6 +59,11 @@ public class ComodoDTO {
                     .build();
         }
 
+        /**
+         * Metodo que converte uma Lista de comodoDTO para Lista de comodos
+         * @param comodos
+         * @return Lista de comodos
+         */
         public static List<Comodo> converte(List<ComodoDTO> comodos) {
             return comodos.stream().map(c -> converte(c)).collect(Collectors.toList());
         }
