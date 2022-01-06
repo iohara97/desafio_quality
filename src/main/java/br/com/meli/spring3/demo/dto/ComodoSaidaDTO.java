@@ -14,10 +14,10 @@ public class ComodoSaidaDTO {
     private String nome;
     private double areaTotal;
 
-    public static ComodoSaidaDTO converte(Comodo comodos) {
+    /*public static ComodoSaidaDTO converte(Comodo comodos) {
         return ComodoSaidaDTO.builder()
                 .nome(comodos.getNome())
                 .areaTotal(comodos.calculaAreaComodo())
                 .build();
-    }
+    }*/
 }

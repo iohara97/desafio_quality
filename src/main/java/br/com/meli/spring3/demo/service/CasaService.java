@@ -56,19 +56,7 @@ public class CasaService {
 
     public Comodo maiorComodo(String nome) {
         Casa casa = casaRepository.buscaCasa(nome);
-
-        int i;
-        List<Comodo> comodos = casa.getComodos();
-        Comodo maiorComodo = comodos.get(0);
-
-        for(i=0;i<comodos.size();i++){
-            Double areaAtual = comodos.get(i).getLargura() * comodos.get(i).getComprimento();
-            Double areaSeguinte = comodos.get(i+1).getLargura() * comodos.get(i+1).getComprimento();
-            if(areaAtual < areaSeguinte) {
-                maiorComodo = comodos.get(i+1);
-            }
-        }
-        return maiorComodo;
+        return casa.getComodos().stream().max(Comparator.comparing(c -> c.getLargura() * c.getComprimento())).orElse(new Comodo());
     }
 
     private boolean temComodo(Casa casa) {
