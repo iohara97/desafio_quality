@@ -3,6 +3,7 @@ package br.com.meli.spring3.demo.dto;
 
 import br.com.meli.spring3.demo.entity.Casa;
 import br.com.meli.spring3.demo.entity.Comodo;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,9 +30,11 @@ public class CasaDTO {
     @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres.")
     private String nome;
 
+  //  @JsonProperty("bairro")
     @Valid
     private BairroDTO bairroDTO;
 
+  //  @JsonProperty("comodos")
     @Valid
     private List<ComodoDTO> comodosDTO;
 
