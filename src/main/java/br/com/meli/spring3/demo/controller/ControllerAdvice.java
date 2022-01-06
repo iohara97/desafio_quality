@@ -1,5 +1,7 @@
 package br.com.meli.spring3.demo.controller;
 
+import exception.BusinessException;
+import exception.ComodosVazioException;
 import exception.PayloadException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +61,16 @@ public class ControllerAdvice {
     @ExceptionHandler(PayloadException.class)
     protected ResponseEntity<Object> handlePayloadException(PayloadException ex, WebRequest request) {
         return ResponseEntity.badRequest().body("Campo não reconhecido.");
+    }
+
+    @ExceptionHandler(ComodosVazioException.class)
+    protected ResponseEntity<Object> handleComodosVazioException(ComodosVazioException ex, WebRequest request) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    protected ResponseEntity<Object> handleBusinessException(BusinessException ex, WebRequest request) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
 }

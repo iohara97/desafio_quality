@@ -4,6 +4,7 @@ import br.com.meli.spring3.demo.dto.ComodoSaidaDTO;
 import br.com.meli.spring3.demo.entity.Casa;
 import br.com.meli.spring3.demo.entity.Comodo;
 import br.com.meli.spring3.demo.repository.CasaRepository;
+import exception.ComodosVazioException;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class CasaService {
         if (temComodo(casa)) {
             return casaRepository.salva(casa);
         } else {
-            throw new RuntimeException("a casa deve ter pelos menos um comodo");
+            throw new ComodosVazioException("A casa deve ter pelos menos um comodo");
         }
     }
 
