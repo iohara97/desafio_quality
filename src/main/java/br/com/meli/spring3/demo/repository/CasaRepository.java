@@ -1,16 +1,14 @@
 package br.com.meli.spring3.demo.repository;
 
 import br.com.meli.spring3.demo.entity.Casa;
-import br.com.meli.spring3.demo.entity.Comodo;
 import lombok.Data;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Repository
 @Data
 public class CasaRepository {
 

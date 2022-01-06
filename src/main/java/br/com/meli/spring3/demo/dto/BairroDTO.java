@@ -1,16 +1,13 @@
 package br.com.meli.spring3.demo.dto;
 
+import org.springframework.validation.annotation.Validated;
 import br.com.meli.spring3.demo.entity.Bairro;
-import br.com.meli.spring3.demo.entity.Casa;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.validation.annotation.Validated;
-
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
-
 
 @Data
 @Builder
@@ -36,7 +33,6 @@ public class BairroDTO {
                 .valorMetroQuadrado(bairroDTO.getValorMetroQuadrado())
                 .build();
         return bairro;
-
     }
 
 }

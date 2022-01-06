@@ -1,5 +1,6 @@
 package br.com.meli.spring3.demo.controller;
 
+import exception.PayloadException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -31,7 +32,12 @@ public class ControllerAdvice {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     protected ResponseEntity<Object> handleHTTPMessageNotReadableExceptions(HttpMessageNotReadableException ex, WebRequest request) {
-//        String bodyOfResponse = ex.getMessage();
         return ResponseEntity.badRequest().body("Houve erro ao tentar serializar um campo.");
     }
+
+    @ExceptionHandler(PayloadException.class)
+    protected ResponseEntity<Object> handlePayloadException(PayloadException ex, WebRequest request) {
+        return ResponseEntity.badRequest().body("Campo não reconhecido.");
+    }
+
 }

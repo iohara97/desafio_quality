@@ -110,6 +110,5 @@ public class BairroRepositoryTest {
         bairroRepository.setBairros(bairros);
 
         assertFalse(bairroRepository.cadastrarBairro(bairro1));
-
     }
 }

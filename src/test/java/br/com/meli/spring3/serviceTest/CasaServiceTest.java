@@ -1,8 +1,6 @@
 package br.com.meli.spring3.serviceTest;
 
-import br.com.meli.spring3.demo.dto.ComodoDTO;
 import br.com.meli.spring3.demo.dto.ComodoSaidaDTO;
-import br.com.meli.spring3.demo.entity.Bairro;
 import br.com.meli.spring3.demo.entity.Casa;
 import br.com.meli.spring3.demo.entity.Comodo;
 import br.com.meli.spring3.demo.repository.CasaRepository;
@@ -10,7 +8,6 @@ import br.com.meli.spring3.demo.service.CasaService;
 import br.com.meli.spring3.utils.MockListaCasas;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -19,10 +16,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CasaServiceTest {
-
-    // obrigatorios
-    // listaComodosDTO
-    // valorComodos
 
     @Test
     // CasaService.salvar()
@@ -116,6 +109,5 @@ public class CasaServiceTest {
         // compara maiorComodo com maiorComodoModelo
         assertTrue(maiorComodo.equals(maiorComodoModelo));
     }
-
 
 }

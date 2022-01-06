@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "509ab6b8-c4df-4673-8e16-ecabc784ee92",
+		"name": "desafio_quality",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post nova casa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nome\": \"Casa Meli\",\n  \"bairro\": {\n    \"nome\": \"Osasco\",\n    \"valorMetroQuadrado\": 500.0\n  },\n  \"comodos\": [\n    {\n      \"nome\": \"Quarto\",\n      \"largura\": 5.0,\n      \"comprimento\": 6.0\n    },\n    {\n      \"nome\": \"Sala\",\n      \"largura\": 7.5,\n      \"comprimento\": 7.0\n    },\n    {\n      \"nome\": \"Cozinha\",\n      \"largura\": 7.3,\n      \"comprimento\": 3.5\n    }\n  ]\n}\n\n\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080",
+					"host": [
+						"localhost"
+					],
+					"port": "8080"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get metros quadrados da casa Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/area/Casa Meli",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"area",
+						"Casa Meli"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get valor da casa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/valor/Casa Meli",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"valor",
+						"Casa Meli"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get area comodos da casa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/areaComodos/Casa Meli",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"areaComodos",
+						"Casa Meli"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get maior comodo da casa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/maiorComodo/Casa Meli",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"maiorComodo",
+						"Casa Meli"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

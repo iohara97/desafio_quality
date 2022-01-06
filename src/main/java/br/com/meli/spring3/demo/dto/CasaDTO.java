@@ -1,19 +1,14 @@
 package br.com.meli.spring3.demo.dto;
 
-
 import br.com.meli.spring3.demo.entity.Casa;
-import br.com.meli.spring3.demo.entity.Comodo;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import exception.PayloadException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.validation.annotation.Validated;
-
-import java.math.BigDecimal;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-
 import java.util.List;
 
 @Data
@@ -30,20 +25,22 @@ public class CasaDTO {
     @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres.")
     private String nome;
 
-  //  @JsonProperty("bairro")
     @Valid
     private BairroDTO bairroDTO;
 
-  //  @JsonProperty("comodos")
     @Valid
     private List<ComodoDTO> comodosDTO;
 
     public static Casa converte(CasaDTO dto) {
-        Casa casa = Casa.builder()
+        try{
+            Casa casa = Casa.builder()
                 .nome(dto.getNome()).bairro(BairroDTO.converte(dto.getBairroDTO()))
                 .comodos(ComodoDTO.converte(dto.getComodosDTO()))
                 .build();
-        return casa;
+            return casa;
+        } catch (Exception e) {
+            throw new PayloadException("");
+        }
     }
 
 }

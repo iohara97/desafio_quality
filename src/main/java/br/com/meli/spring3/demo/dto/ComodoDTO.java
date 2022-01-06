@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.validation.annotation.Validated;
-
 import javax.validation.constraints.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,6 +49,5 @@ public class ComodoDTO {
         public static List<Comodo> converte(List<ComodoDTO> comodos) {
             return comodos.stream().map(c -> converte(c)).collect(Collectors.toList());
         }
-
 
 }

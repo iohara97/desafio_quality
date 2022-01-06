@@ -4,8 +4,8 @@ import br.com.meli.spring3.demo.dto.ComodoSaidaDTO;
 import br.com.meli.spring3.demo.entity.Casa;
 import br.com.meli.spring3.demo.entity.Comodo;
 import br.com.meli.spring3.demo.repository.CasaRepository;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -15,9 +15,9 @@ import java.util.List;
 
 @Service
 @NoArgsConstructor
-@Data
 public class CasaService {
 
+    @Autowired
     private CasaRepository casaRepository;
 
     public CasaService(CasaRepository casaRepository) {

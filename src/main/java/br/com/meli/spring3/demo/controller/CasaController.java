@@ -6,12 +6,10 @@ import br.com.meli.spring3.demo.entity.Casa;
 import br.com.meli.spring3.demo.entity.Comodo;
 import br.com.meli.spring3.demo.service.CasaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import javax.validation.executable.ValidateOnExecution;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -27,7 +25,7 @@ public class CasaController {
     public ResponseEntity<Casa> cadastra(@Valid @RequestBody CasaDTO dto) {
         Casa casa = CasaDTO.converte(dto);
         casaService.salvar(casa);
-        return ResponseEntity.ok(casa);
+        return ResponseEntity.status(HttpStatus.CREATED).body(casa);
     }
 
     // Retorne o numero total de metros quadrados da casa
@@ -54,5 +52,4 @@ public class CasaController {
         Casa casa = casaService.findOne(nomeDaCasa);
         return ResponseEntity.ok(casaService.listaComodoDTO(casa));
     }
-
 }
