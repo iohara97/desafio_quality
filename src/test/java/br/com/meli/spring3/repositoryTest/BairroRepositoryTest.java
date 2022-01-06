@@ -64,6 +64,9 @@ public class BairroRepositoryTest {
         assertTrue(bairroRepository.bairroExiste(bairro1));
     }
 
+    /**
+     * Método para confirmar se o bairro foi salvo
+     */
     @Test
     public void deveSalvarBairro() {
 
@@ -86,6 +89,9 @@ public class BairroRepositoryTest {
 
     }
 
+    /**
+     * Método que não salva o bairro, pois ele já existe
+     */
     @Test
     public void naoDeveSalvarBairro() {
 

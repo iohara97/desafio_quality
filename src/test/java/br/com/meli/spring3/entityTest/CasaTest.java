@@ -65,4 +65,27 @@ public class CasaTest {
 
     }*/
 
+    /**
+     * Método que deve confirmar se o método calcular valorCasa está correto
+     * @throws IOException
+     */
+
+    /*
+    @Test
+    public void deveCalcularValorCasa() throws IOException {
+
+        List<Comodo> comodos = new ArrayList<>();
+        comodos.add(new Comodo("cozinha", 10, 15));
+        comodos.add(new Comodo("sala", 5, 12));
+
+        Casa casa = Casa.builder()
+                .nome("casa")
+                .endereco("Bairro da Flor")
+                .valorMetroQuadrado(new BigDecimal(100))
+                .comodos(comodos)
+                .build();
+        // cálculo total da área = 10 * 15 + 5 * 12 = 210 e o valor R$ 100 = 21000
+        assert(casa.valorCasa().compareTo(new BigDecimal(21000)) == 0);
+    }
+*/
 }
