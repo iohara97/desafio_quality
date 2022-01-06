@@ -18,16 +18,8 @@ public class CasaRepository {
         casas.add(casa);
     }
 
-    public double calculaArea(String nome) {
-        return findOne(nome).calculaArea();
-    }
-
-    public BigDecimal valorCasa(String nome) {
-        return findOne(nome).valorCasa();
-    }
-
-    public Comodo maiorComodo(String nome) {
-        return findOne(nome).maiorComodo();
+    public Casa buscaCasa(String nome) {
+        return findOne(nome);
     }
 
     public Casa findOne(String nome) {

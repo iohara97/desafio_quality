@@ -43,24 +43,4 @@ public class CasaDTO {
         return casa;
     }
 
-
-    /* exemplo JSON
-    {
-        "nome" : "mansão",
-        "endereco" : "Jardins",
-        "comodos" : [
-            {
-            "nome" : "cozinha",
-            "largura" : 10,
-            "comprimento": 15
-            },
-            {
-            "nome" : "sala",
-            "largura" : 5,
-            "comprimento": 12
-            }
-        ]
-    }
-*/
-
 }

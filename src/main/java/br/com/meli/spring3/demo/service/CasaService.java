@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -34,22 +35,29 @@ public class CasaService {
     public List<ComodoSaidaDTO> listaComodoDTO(Casa casa) {
         List<ComodoSaidaDTO> comodos = new ArrayList<>();
         for (Comodo c : casa.getComodos()) {
-            ComodoSaidaDTO comodoDTO = new ComodoSaidaDTO(c.getNome(),c.calculaAreaComodo());
+            ComodoSaidaDTO comodoDTO = new ComodoSaidaDTO(c.getNome(),c.getComprimento() * c.getLargura());
             comodos.add(comodoDTO);
         }
         return comodos;
     }
 
     public Double calculaArea(String nome) {
-        return casaRepository.calculaArea(nome);
+        Casa casa = casaRepository.buscaCasa(nome);
+        double totalArea = 0;
+        for (Comodo comodo : casa.getComodos()) {
+            totalArea += comodo.getComprimento() * comodo.getLargura();
+        }
+        return totalArea;
     }
 
     public BigDecimal valorCasa(String nome) {
-        return casaRepository.valorCasa(nome);
+        return BigDecimal.valueOf(calculaArea(nome)).multiply(casaRepository.buscaCasa(nome).getBairro().getValorMetroQuadrado());
     }
 
     public Comodo maiorComodo(String nome) {
-        return casaRepository.maiorComodo(nome);
+        Casa casa = casaRepository.buscaCasa(nome);
+
+        return casa.getComodos().stream().max(Comparator.comparing(c -> c.getLargura() * c.getComprimento())).orElse(new Comodo());
     }
 
     private boolean temComodo(Casa casa) {
