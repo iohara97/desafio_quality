@@ -1,25 +1,31 @@
 package br.com.meli.spring3.demo.repository;
 
+import br.com.meli.spring3.demo.entity.Bairro;
 import exception.BusinessException;
+import lombok.Data;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
 import java.util.*;
 
+@Data
 @Repository
 public class BairroRepository {
 
-    HashMap<String, BigDecimal> bairros = new HashMap<>();
+    private List<Bairro> bairros;
 
-    public BairroRepository() {
-        bairros.put("Republica", new BigDecimal(200));
-        bairros.put("Dom Pedro", new BigDecimal(500));
-        bairros.put("Belenzinho", new BigDecimal(400));
-        bairros.put("Cambuci", new BigDecimal(600));
+    public BairroRepository() { }
+
+    public boolean cadastrarBairro(Bairro bairro) {
+        if(bairros.contains(bairro)) {
+            return false;
+        } else {
+            bairros.add(bairro);
+            return true;
+        }
     }
 
-    public boolean bairroExiste(String bairro) {
-        if(bairros.containsKey(bairro)) {
+    public boolean bairroExiste(Bairro bairro) {
+        if(bairros.contains(bairro)) {
             return true;
         }
         throw new BusinessException("Bairro não encontrado.");
