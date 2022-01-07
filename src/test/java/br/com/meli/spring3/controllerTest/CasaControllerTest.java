@@ -1,5 +1,8 @@
 package br.com.meli.spring3.controllerTest;
 
+import br.com.meli.spring3.demo.dto.CasaDTO;
+import br.com.meli.spring3.demo.entity.Casa;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -11,6 +14,14 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
 @SpringBootTest(classes = CasaControllerTest.class)
 @AutoConfigureMockMvc
 public class CasaControllerTest {
@@ -21,6 +32,9 @@ public class CasaControllerTest {
     // Cadastro de casa
     @Test
     public void deveRetornarObjetoCasa() throws Exception {
+        // criar um objeto CasaDTO -> enviado json na request
+        // com esse objecto da um converteDTO para casa
+        // compara a response com o objeto convertido
 
         String json = "{\n" +
                 "          \"nome\": \"Casa\",\n" +
@@ -36,20 +50,26 @@ public class CasaControllerTest {
                 "            }\n" +
                 "          ]\n" +
                 "        }";
-        //List<Comodo> comodos = new ArrayList<Comodo>();
-        //comodos.add(new Comodo("quarto", 15,12));
-        //Casa c = new Casa("Casa", new Bairro("Flor", new BigDecimal(500)), comodos );
 
 
-        //System.out.println(json);
+        ObjectMapper mapper = new ObjectMapper();
+        CasaDTO casaDTO = mapper.readValue(json, CasaDTO.class);
+        Casa casaEsperada = CasaDTO.converte(casaDTO);
 
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("http://localhost:8080/criarCasa")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(json)
-                .characterEncoding("utf-8"))
-                .andExpect(MockMvcResultMatchers.status().isCreated()
-                );
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8080/"))
+                .setHeader("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(json))
+                .build();
+
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+
+        Casa casaRecebida = mapper.readValue(response.body(), Casa.class);
+
+        assert(casaRecebida.equals(casaEsperada));
+
     }
 
     // Deve retornar o numero total de metros quadrados da casa
