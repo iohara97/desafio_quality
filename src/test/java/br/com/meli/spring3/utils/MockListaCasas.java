@@ -38,5 +38,6 @@ public class MockListaCasas {
 
         this.casas.add(new Casa("Casa1", bairroFlor , listaComodos1));
         this.casas.add(new Casa("Casa2", bairroRepublica, listaComodos2));
+        this.casas.add(new Casa("CasaSemComodo", bairroRepublica, new ArrayList<Comodo>()));
     }
 }

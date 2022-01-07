@@ -6,6 +6,8 @@ import br.com.meli.spring3.demo.entity.Comodo;
 import br.com.meli.spring3.demo.repository.CasaRepository;
 import br.com.meli.spring3.demo.service.CasaService;
 import br.com.meli.spring3.utils.MockListaCasas;
+import exception.BusinessException;
+import exception.ComodosVazioException;
 import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 import java.io.IOException;
@@ -13,7 +15,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Classe que contem a logica da entidade casa para efeito de teste
@@ -21,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CasaServiceTest {
 
     private MockListaCasas listaCasas;
-    private Casa casa;
+    private Casa casa, casaSemComodo;
     private CasaRepository mockCasaRepository;
     private CasaService casaService;
 
@@ -29,11 +31,14 @@ public class CasaServiceTest {
     void init() {
         listaCasas = new MockListaCasas();
         casa = listaCasas.getCasas().get(0);;
+        casaSemComodo = listaCasas.getCasas().get(2);;
+
 
         mockCasaRepository = Mockito.mock(CasaRepository.class);
         Mockito.when(mockCasaRepository.salva(casa)).thenReturn(casa);
         Mockito.when(mockCasaRepository.buscaCasa("casa1")).thenReturn(casa);
         Mockito.when(mockCasaRepository.buscaCasa("casa2")).thenReturn(listaCasas.getCasas().get(1));
+//        Mockito.when(mockCasaRepository.salva(casaSemComodo)).thenReturn(casaSemComodo);
 
         casaService = new CasaService(mockCasaRepository);
     }
@@ -45,6 +50,22 @@ public class CasaServiceTest {
     public void deveVerificarACriacaoDeUmaNovaCasa(){
         Casa casaCriada = casaService.salvar(casa);
         assertTrue(casaCriada.equals(casa));
+    }
+
+    /**
+     * Metodo para testar se uma casa sem cômodos não é salva
+     */
+    @Test
+    public void deveVerificarACriacaoDeUmaNovaCasaSemComodos(){
+
+        ComodosVazioException excecaoEsperada = assertThrows(
+                ComodosVazioException.class,
+                () -> casaService.salvar(casaSemComodo) //act
+        );
+
+//        assertTrue(excecaoEsperada.getMessage().contains("casa deve ter pelos menos um comodo"));
+//        assert(excecaoEsperada.getMessage().contains("A casa deve ter pelos menos um comodoo") == true);
+        assertEquals(excecaoEsperada.getMessage(), "A casa deve ter pelos menos um comodo");
     }
 
     /**
