@@ -3,12 +3,15 @@ package br.com.meli.spring3.controllerTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+@SpringBootTest(classes = CasaControllerTest.class)
 @AutoConfigureMockMvc
 public class CasaControllerTest {
 
@@ -27,7 +30,7 @@ public class CasaControllerTest {
                 "          },\n" +
                 "          \"comodosDTO\": [\n" +
                 "            {\n" +
-                "              \"nome\": \"quarto\",\n" +
+                "              \"nome\": \"Quarto\",\n" +
                 "              \"largura\": 15,\n" +
                 "              \"comprimento\": 12\n" +
                 "            }\n" +
@@ -38,13 +41,14 @@ public class CasaControllerTest {
         //Casa c = new Casa("Casa", new Bairro("Flor", new BigDecimal(500)), comodos );
 
 
-        System.out.println(json);
+        //System.out.println(json);
 
         mockMvc.perform(MockMvcRequestBuilders
-                .post("/criarCasa")
+                .post("http://localhost:8080/criarCasa")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(json))
-                .andExpect(MockMvcResultMatchers.status().isOk()
+                .content(json)
+                .characterEncoding("utf-8"))
+                .andExpect(MockMvcResultMatchers.status().isCreated()
                 );
     }
 
