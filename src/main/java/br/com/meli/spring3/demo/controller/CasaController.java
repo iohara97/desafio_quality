@@ -25,9 +25,9 @@ public class CasaController {
     private CasaService casaService;
 
     /**
-     * Metodo para recebe o post e receber uma casa
-     * @param dto
-     * @return HttpResponse com cadastro de uma casa e o status created
+     * Metodo para receber o post de uma casa e devolver a mesma
+     * @param dto (CasaDTO)
+     * @return HttpResponse com cadastro de uma casa (Casa) e o status created
      */
     @PostMapping
     public ResponseEntity<Casa> cadastra(@Valid @RequestBody CasaDTO dto) {
@@ -38,8 +38,8 @@ public class CasaController {
 
     /**
      * Metodo para retornar area total de uma casa
-     * @param nomeDaCasa
-     * @return Area total
+     * @param nomeDaCasa (String)
+     * @return HttpResponse com a área total (Double)
      */
     @GetMapping("/area/{nomeDaCasa}")
     public ResponseEntity<Double> calculaArea(@PathVariable String nomeDaCasa) {
@@ -48,8 +48,8 @@ public class CasaController {
 
     /**
      * Metodo para retornar o valor da casa
-     * @param nomeDaCasa
-     * @return Valor da casa
+     * @param nomeDaCasa (String)
+     * @return HttpResponse com o valor da casa (BigDecimal)
      */
     @GetMapping("/valor/{nomeDaCasa}")
     public ResponseEntity<BigDecimal> valorCasa(@PathVariable String nomeDaCasa) {
@@ -58,8 +58,8 @@ public class CasaController {
 
     /**
      * Metodo para retornar o maior comodo da casa
-     * @param nomeDaCasa
-     * @return Maior comodo da casa
+     * @param nomeDaCasa (String)
+     * @return HttpResponse com o maior comodo da casa (Comodo)
      */
     @GetMapping("/maiorComodo/{nomeDaCasa}")
     public ResponseEntity<Comodo> maiorComodo(@PathVariable String nomeDaCasa) {
@@ -67,9 +67,9 @@ public class CasaController {
     }
 
     /**
-     * Metodo para retornar uma lista de comodo da casa exibindo a área total de cada comodo
-     * @param nomeDaCasa
-     * @return Lista de comodo com sua respectiva área total
+     * Metodo para retornar uma lista de comodos da casa exibindo a área total de cada comodo
+     * @param nomeDaCasa (String)
+     * @return HttpResponse com a lista de comodos com sua respectiva área total (List<ComodoSaidaDTO>)
      */
     @GetMapping("/areaComodos/{nomeDaCasa}")
     public ResponseEntity<List<ComodoSaidaDTO>> areaComodos(@PathVariable String nomeDaCasa) {

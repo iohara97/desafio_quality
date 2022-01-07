@@ -19,8 +19,8 @@ public class CasaRepository {
 
     /**
      * Metodo que salva casa em uma lista
-     * @param casa
-     * @return casa
+     * @param casa (Casa)
+     * @return casa (Casa)
      */
     public Casa salva(Casa casa) {
         casas.add(casa);
@@ -29,8 +29,8 @@ public class CasaRepository {
 
     /**
      * Metodo de procura uma respectiva casa
-     * @param nome
-     * @return casa localizada
+     * @param nome da casa (String)
+     * @return casa localizada (Casa)
      */
     public Casa buscaCasa(String nome) {
         Optional<Casa> optinal = casas.stream().filter(c -> c.getNome().equals(nome)).findAny();

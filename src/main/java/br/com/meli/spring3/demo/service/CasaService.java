@@ -30,9 +30,9 @@ public class CasaService {
 
     /**
      * Metodo para salvar uma casa e armazenar em um repository
-     * @param casa
-     * @return casa
-     * @exception RuntimeException
+     * @param casa (Casa)
+     * @return casa (Casa)
+     * @exception ComodosVazioException em caso de não existir nenhum cômodo na casa
      */
     public Casa salvar(Casa casa) {
         if (temComodo(casa)) {
@@ -43,9 +43,9 @@ public class CasaService {
     }
 
     /**
-     * Metodo que busta uma casa em um Repository
-     * @param nome
-     * @return casa
+     * Metodo que busca uma casa em um Repository
+     * @param nome da casa (String)
+     * @return casa (Casa)
      */
     public Casa findOne(String nome) {
         return casaRepository.buscaCasa(nome);
@@ -53,8 +53,8 @@ public class CasaService {
 
     /**
      * Metodo para listar os comodosDTO de uma casa
-     * @param casa
-     * @return Lista de comodos
+     * @param casa (Casa)
+     * @return Lista de comodos (ComodoSaidaDTO)
      */
     public List<ComodoSaidaDTO> listaComodoDTO(Casa casa) {
         List<ComodoSaidaDTO> comodos = new ArrayList<>();
@@ -67,8 +67,8 @@ public class CasaService {
 
     /**
      * Metodo para calcular a área de uma casa
-     * @param nome
-     * @return Área total de uma casa
+     * @param nome da casa (String)
+     * @return Área total de uma casa (Double)
      */
     public Double calculaArea(String nome) {
         Casa casa = casaRepository.buscaCasa(nome);
@@ -81,17 +81,17 @@ public class CasaService {
 
     /**
      * Metodo para retornar o valor de uma casa
-     * @param nome
-     * @return Valor de uma casa
+     * @param nome da casa (String)
+     * @return Valor de uma casa (BigDecimal)
      */
     public BigDecimal valorCasa(String nome) {
         return BigDecimal.valueOf(calculaArea(nome)).multiply(casaRepository.buscaCasa(nome).getBairro().getValorMetroQuadrado());
     }
 
     /**
-     * Metodo para o maior comodo de uma casa
-     * @param nome
-     * @return Maior comodo de uma casa
+     * Metodo para retornar o maior comodo de uma casa
+     * @param nome da casa (String)
+     * @return Maior comodo de uma casa (Comodo)
      */
     public Comodo maiorComodo(String nome) {
         Casa casa = casaRepository.buscaCasa(nome);
@@ -100,7 +100,7 @@ public class CasaService {
 
     /**
      * Metodo para verificar se a casa tem comodo
-     * @param casa
+     * @param casa (Casa)
      * @return boolean
      */
     private boolean temComodo(Casa casa) {

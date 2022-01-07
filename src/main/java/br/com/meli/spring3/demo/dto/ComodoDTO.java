@@ -34,8 +34,8 @@ public class ComodoDTO {
 
         /**
          *  Metodo que converte um DTO para sua respectiva entidade
-         * @param dto
-         * @return Entidade comodos
+         * @param dto (ComodoDTO)
+         * @return Entidade comodo (Comodo)
          */
         public static Comodo converte(ComodoDTO dto) {
             Comodo comodos = Comodo.builder()
@@ -48,21 +48,21 @@ public class ComodoDTO {
 
         /**
          *  Metodo que converte uma entidade para uma DTO
-         * @param comodos
-         * @return ComodoDTO
+         * @param comodo (Comodo)
+         * @return ComodoDTO (ComodoDTO)
          */
-        public static ComodoDTO converte(Comodo comodos) {
+        public static ComodoDTO converte(Comodo comodo) {
             return ComodoDTO.builder()
-                    .nome(comodos.getNome())
-                    .largura(comodos.getLargura())
-                    .comprimento(comodos.getComprimento())
+                    .nome(comodo.getNome())
+                    .largura(comodo.getLargura())
+                    .comprimento(comodo.getComprimento())
                     .build();
         }
 
         /**
          * Metodo que converte uma Lista de comodoDTO para Lista de comodos
-         * @param comodos
-         * @return Lista de comodos
+         * @param comodos (List<ComodoDTO>)
+         * @return Lista de comodos (List<Comodo>)
          */
         public static List<Comodo> converte(List<ComodoDTO> comodos) {
             return comodos.stream().map(c -> converte(c)).collect(Collectors.toList());

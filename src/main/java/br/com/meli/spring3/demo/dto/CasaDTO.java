@@ -36,8 +36,8 @@ public class CasaDTO {
 
     /**
      * Metodo que converte um DTO para sua respectiva entidade
-     * @param dto
-     * @return Entidade casa
+     * @param dto (CasaDTO)
+     * @return Entidade casa (Casa)
      * @exception PayloadException
      */
     public static Casa converte(CasaDTO dto) {

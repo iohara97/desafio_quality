@@ -25,7 +25,7 @@ public class ControllerAdvice {
 
     /**
      * O handler usado para tratar as validações nos DTOs
-     * @param ex
+     * @param ex (MethodArgumentNotValidException)
      * @return HttpResponse 400 com a mensagem de erro
      */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -43,9 +43,9 @@ public class ControllerAdvice {
 
     /**
      * O handler usado para tratar erro na validação dos valores do Body Request
-     * @param ex
-     * @param request
-     * @return HttpResponse 400 com a mensagem de erro
+     * @param ex (HttpMessageNotReadableException)
+     * @param request (WebRequest)
+     * @return HTTPResponse 400 com a mensagem de erro (String)
      */
     @ExceptionHandler(HttpMessageNotReadableException.class)
     protected ResponseEntity<Object> handleHTTPMessageNotReadableExceptions(HttpMessageNotReadableException ex, WebRequest request) {
@@ -54,20 +54,32 @@ public class ControllerAdvice {
 
     /**
      * O handler usado para tratar erro na validação das chaves do Bady Request
-     * @param ex
-     * @param request
-     * @return HttpResponse 400 com a mensagem de erro
+     * @param ex (PayloadException)
+     * @param request (WebRequest)
+     * @return HTTPResponse 400 com a mensagem de erro (String)
      */
     @ExceptionHandler(PayloadException.class)
     protected ResponseEntity<Object> handlePayloadException(PayloadException ex, WebRequest request) {
         return ResponseEntity.badRequest().body("Campo não reconhecido.");
     }
 
+    /**
+     * O handler usado para tratar a persistência de uma casa sem cômodos.
+     * @param ex (ComodosVazioException)
+     * @param request (WebRequest)
+     * @return HTTPResponse 400 com a mensagem de erro (String)
+     */
     @ExceptionHandler(ComodosVazioException.class)
     protected ResponseEntity<Object> handleComodosVazioException(ComodosVazioException ex, WebRequest request) {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
+    /**
+     * O handler usado para tratar a verificação de existência de um bairro.
+     * @param ex (BusinessException)
+     * @param request (WebRequest)
+     * @return HTTPResponse 400 com a mensagem de erro (String)
+     */
     @ExceptionHandler(BusinessException.class)
     protected ResponseEntity<Object> handleBusinessException(BusinessException ex, WebRequest request) {
         return ResponseEntity.badRequest().body(ex.getMessage());

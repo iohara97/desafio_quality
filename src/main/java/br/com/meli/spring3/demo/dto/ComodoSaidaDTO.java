@@ -22,20 +22,20 @@ public class ComodoSaidaDTO {
 
     /**
      * Metodo que recebe um objeto comodo e retorna um comodoSaidaDTO
-     * @param comodos
-     * @return ComodoSaidaDTO
+     * @param comodo (Comodo)
+     * @return ComodoSaidaDTO (ComodoSaidaDTO)
      */
-    public static ComodoSaidaDTO converte(Comodo comodos) {
+    public static ComodoSaidaDTO converte(Comodo comodo) {
         return ComodoSaidaDTO.builder()
-                .nome(comodos.getNome())
-                .areaTotal(comodos.getLargura() * comodos.getComprimento())
+                .nome(comodo.getNome())
+                .areaTotal(comodo.getLargura() * comodo.getComprimento())
                 .build();
     }
 
     /**
      * Metodo que recebe uma lista de objeto comodo e retorna uma lista de comodoSaidaDTO
-     * @param comodos
-     * @return Lista ComodoSaidaDTO
+     * @param comodos (List<Comodo>)
+     * @return Lista ComodoSaidaDTO (List<ComodoSaidaDTO>)
      */
     public static List<ComodoSaidaDTO> converte(List<Comodo> comodos) {
         return comodos.stream().map(c -> converte(c)).collect(Collectors.toList());

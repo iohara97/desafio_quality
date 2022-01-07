@@ -32,8 +32,8 @@ public class BairroDTO {
 
     /**
      * Metodo que converte um DTO para sua respectiva entidade
-     * @param bairroDTO
-     * @return Entidade bairro
+     * @param bairroDTO (BairroDTO)
+     * @return Entidade bairro (Bairro)
      */
     public static Bairro converte(BairroDTO bairroDTO) {
         Bairro bairro = Bairro.builder()

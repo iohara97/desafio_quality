@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 
 /**
- * Classe que ira percistir os dados em uma lista de bairros
+ * Classe que ira persistir os dados em uma lista de bairros
  */
 @Data
 @Repository
@@ -20,7 +20,7 @@ public class BairroRepository {
 
     /**
      * Metodo para verificar se o bairro está cadastrado
-     * @param bairro
+     * @param bairro (Bairro)
      * @return boolean
      */
     public boolean cadastrarBairro(Bairro bairro) {
@@ -34,7 +34,7 @@ public class BairroRepository {
 
     /**
      * Metodo que retorna verdadeiro se o bairro encontra-se na lista
-     * @param bairro
+     * @param bairro (Bairro)
      * @return boolean
      * @exception BusinessException
      */
